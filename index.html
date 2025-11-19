@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lontra Blog | 技術ブログ</title>
+  <meta name="description" content="技術メモや学びの記録を共有するブログです。" />
+  
+  <!-- OGP -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Lontra Blog" />
+  <meta property="og:description" content="技術メモや学びの記録を共有するブログです。" />
+  <meta property="og:url" content="https://bravebird0914.github.io/lontra-blog/" />
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Montserrat:wght@300;400;500;600;700;800&family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- サイドバー -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="profile-image-wrapper">
+        <a href="index.html" class="profile-image-link">
+          <div class="profile-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+            </svg>
+          </div>
+        </a>
+      </div>
+      
+      <a href="index.html" class="sidebar-title-link">
+        <h1 class="sidebar-title">
+          <span class="name-first">Lontra</span><span class="name-second">Blog</span>
+        </h1>
+      </a>
+      <p class="sidebar-subtitle">
+        <span class="subtitle-line">Technology Blog</span>
+        <span class="subtitle-accent">Learning & Sharing</span>
+      </p>
+    </div>
+    
+    <nav class="sidebar-nav">
+      <ul>
+        <li><a href="index.html">All Posts</a></li>
+        <li><a href="https://bravebird0914.github.io/" target="_blank">Portfolio</a></li>
+        <li><a href="https://github.com/bravebird0914/lontra-blog" target="_blank">GitHub</a></li>
+      </ul>
+    </nav>
+  </aside>
+  
+  <!-- 日付表示 -->
+  <div id="current-date" class="current-date">
+    <span class="date-year"></span>
+    <span class="date-separator">.</span>
+    <span class="date-month-day"></span>
+    <span class="date-weekday"></span>
+  </div>
+
+  <!-- Dark Mode Toggle -->
+  <button id="dark-mode-toggle" class="dark-mode-toggle" aria-label="ダークモード切り替え">
+    <span class="toggle-icon">
+      <!-- Moon Icon (Light Mode) -->
+      <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+      </svg>
+      <!-- Sun Icon (Dark Mode) -->
+      <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display: none;">
+        <circle cx="12" cy="12" r="5"></circle>
+        <line x1="12" y1="1" x2="12" y2="3"></line>
+        <line x1="12" y1="21" x2="12" y2="23"></line>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+        <line x1="1" y1="12" x2="3" y2="12"></line>
+        <line x1="21" y1="12" x2="23" y2="12"></line>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+      </svg>
+    </span>
+  </button>
+
+  <!-- メインコンテンツ -->
+  <main class="main-content">
+    <section id="blog-list">
+      <div class="blog-header">
+        <h1 class="blog-title">All Posts</h1>
+        <p class="blog-description">技術メモや学びの記録を共有しています</p>
+      </div>
+      
+      <div id="blog-grid" class="blog-grid">
+        <!-- JavaScriptで動的に記事カードが追加されます -->
+        
+        <!-- 準備中カード（記事がない場合の表示） -->
+        <div class="blog-card blog-card-coming-soon">
+          <div class="blog-card-meta">
+            <span class="blog-card-date">Coming Soon</span>
+            <span class="blog-card-category">🚀</span>
+          </div>
+          <h3 class="blog-card-title">
+            <span>最初の記事を準備中...</span>
+          </h3>
+          <p class="blog-card-excerpt">
+            記事をMarkdownで書いて、ビルドスクリプトを実行すると自動的に表示されます。
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/main.js"></script>
+  <script src="js/blog.js"></script>
+</body>
+</html>
+
