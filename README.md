@@ -1,6 +1,6 @@
 # Lontra Blog
 
-友人と2人で運営する技術ブログサイトです。
+友人と2人で運営するグルメブログサイトです。
 
 ## 🔗 リンク
 
@@ -10,7 +10,7 @@
 
 ## 📖 概要
 
-このブログでは、技術的な学びや日々の気づきを記録・共有しています。
+このブログでは、美味しいお店や料理の記録・感想を共有しています。
 
 ## ✨ 特徴
 
@@ -151,7 +151,7 @@ GitHub Pagesの設定：
 
 ## 📄 ライセンス
 
-© 2024 Lontra Blog Contributors. All rights reserved.
+© 2025 Lontra Blog Contributors. All rights reserved.
 
 ---
 

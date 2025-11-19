@@ -60,10 +60,9 @@ const initDarkModeToggle = () => {
   
   // ローカルストレージから設定を読み込み
   const savedMode = localStorage.getItem('lontra-blog-darkMode');
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
   
-  // 初期状態を設定
-  if (savedMode === 'dark' || (!savedMode && prefersDark)) {
+  // 初期状態を設定（デフォルトはライトモード）
+  if (savedMode === 'dark') {
     body.classList.add('dark-mode');
     updateIcon(true);
   } else {
