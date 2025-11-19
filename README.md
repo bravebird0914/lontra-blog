@@ -1,11 +1,10 @@
-# Lontra Blog
+# lontra
 
 友人と2人で運営するグルメブログサイトです。
 
 ## 🔗 リンク
 
 - **GitHub Pages**: https://bravebird0914.github.io/lontra-blog/
-- **GitHub Repository**: https://github.com/bravebird0914/lontra-blog
 - **Portfolio Site**: https://bravebird0914.github.io/
 
 ## 📖 概要
@@ -59,7 +58,7 @@ lontra-blog/
 ---
 title: 記事のタイトル
 date: 2024-11-19
-category: Tech
+category: Restaurant
 excerpt: 記事の要約文。一覧ページに表示されます。
 ---
 
@@ -151,7 +150,7 @@ GitHub Pagesの設定：
 
 ## 📄 ライセンス
 
-© 2025 Lontra Blog Contributors. All rights reserved.
+© 2025 lontra Contributors. All rights reserved.
 
 ---
 
@@ -172,4 +171,8 @@ GitHub Pagesの設定：
 ---
 
 **Happy Blogging! 📝✨**
+
+---
+
+*lontra - 美味しいグルメを記録・共有する場所*
 

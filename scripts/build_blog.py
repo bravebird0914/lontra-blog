@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Lontra Blog - Markdown記事をHTMLに変換し、記事一覧（JSON）を生成するスクリプト
+lontra - Markdown記事をHTMLに変換し、記事一覧（JSON）を生成するスクリプト
 
 使い方:
     python scripts/build_blog.py
@@ -140,8 +140,8 @@ def generate_html(metadata, body_html, template):
     html = template
     
     # タイトル
-    html = html.replace('<title>記事タイトル | Lontra Blog</title>', 
-                       f'<title>{metadata.get("title", "記事")} | Lontra Blog</title>')
+    html = html.replace('<title>記事タイトル | lontra</title>', 
+                       f'<title>{metadata.get("title", "記事")} | lontra</title>')
     html = html.replace('content="記事の説明文をここに記入してください。"',
                        f'content="{metadata.get("excerpt", "")}"')
     
@@ -244,7 +244,7 @@ def build_posts():
 
 
 if __name__ == "__main__":
-    print("🚀 Lontra Blog ビルドを開始します...\n")
+    print("🚀 lontra ビルドを開始します...\n")
     build_posts()
     print("\n✅ ブログビルド完了！")
 

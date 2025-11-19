@@ -1,5 +1,5 @@
 // ========================================
-// Lontra Blog - メインJavaScript
+// lontra - メインJavaScript
 // ========================================
 
 // 日付と曜日の表示
@@ -59,7 +59,7 @@ const initDarkModeToggle = () => {
   };
   
   // ローカルストレージから設定を読み込み
-  const savedMode = localStorage.getItem('lontra-blog-darkMode');
+  const savedMode = localStorage.getItem('darkMode');
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
   
   // 初期状態を設定
@@ -76,12 +76,12 @@ const initDarkModeToggle = () => {
     const isDark = body.classList.contains('dark-mode');
     
     updateIcon(isDark);
-    localStorage.setItem('lontra-blog-darkMode', isDark ? 'dark' : 'light');
+    localStorage.setItem('darkMode', isDark ? 'dark' : 'light');
   });
   
   // システムの設定変更を監視
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-    if (!localStorage.getItem('lontra-blog-darkMode')) {
+    if (!localStorage.getItem('darkMode')) {
       if (e.matches) {
         body.classList.add('dark-mode');
         updateIcon(true);
@@ -129,6 +129,6 @@ window.addEventListener('load', () => {
 
 // デバッグ用
 if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-  console.log('✨ Lontra Blog loaded');
+  console.log('✨ lontra loaded');
 }
 
