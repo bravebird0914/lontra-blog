@@ -62,6 +62,28 @@ def markdown_to_html(markdown_text):
     """
     html = markdown_text
     
+    # 行末のバックスラッシュ（\）を改行（<br>）に変換
+    # ただし、コードブロック内や既に処理済みの部分は除外
+    html = re.sub(r'\\\s*\n', '<br>\n', html)
+    
+    # 画像リンク: ![alt text](path)
+    def replace_image(match):
+        alt_text = match.group(1)
+        image_path = match.group(2)
+        # 相対パス ../images/ を images/ に変換
+        image_path = image_path.replace('../images/', 'images/')
+        return f'<img src="{image_path}" alt="{alt_text}" />'
+    
+    html = re.sub(r'!\[([^\]]*)\]\(([^)]+)\)', replace_image, html)
+    
+    # リンク: [text](url)
+    def replace_link(match):
+        link_text = match.group(1)
+        link_url = match.group(2)
+        return f'<a href="{link_url}">{link_text}</a>'
+    
+    html = re.sub(r'\[([^\]]+)\]\(([^)]+)\)', replace_link, html)
+    
     # 見出し（h1からh3まで）
     html = re.sub(r'^### (.+)$', r'<h3>\1</h3>', html, flags=re.MULTILINE)
     html = re.sub(r'^## (.+)$', r'<h2>\1</h2>', html, flags=re.MULTILINE)
@@ -111,16 +133,42 @@ def markdown_to_html(markdown_text):
     # 引用
     html = re.sub(r'^> (.+)$', r'<blockquote>\1</blockquote>', html, flags=re.MULTILINE)
     
-    # 段落
+    # 段落処理（画像や見出しを含む行は段落にしない）
+    lines = html.split('\n')
     paragraphs = []
-    for block in html.split('\n\n'):
-        block = block.strip()
-        if block and not any(block.startswith(f'<{tag}') for tag in ['h1', 'h2', 'h3', 'ul', 'pre', 'blockquote']):
-            paragraphs.append(f'<p>{block}</p>')
-        else:
-            paragraphs.append(block)
+    current_paragraph = []
     
-    html = '\n\n'.join(paragraphs)
+    for line in lines:
+        line_stripped = line.strip()
+        # 既にHTMLタグで囲まれている要素（見出し、リスト、コードブロック、画像、引用）はそのまま
+        if (line_stripped.startswith('<h') or 
+            line_stripped.startswith('<ul>') or 
+            line_stripped.startswith('</ul>') or 
+            line_stripped.startswith('<li>') or 
+            line_stripped.startswith('<pre>') or 
+            line_stripped.startswith('</pre>') or 
+            line_stripped.startswith('<blockquote>') or 
+            line_stripped.startswith('</blockquote>') or
+            line_stripped.startswith('<img')):
+            # 現在の段落を閉じる
+            if current_paragraph:
+                paragraphs.append('<p>' + ' '.join(current_paragraph) + '</p>')
+                current_paragraph = []
+            paragraphs.append(line)
+        elif line_stripped == '':
+            # 空行で段落を区切る
+            if current_paragraph:
+                paragraphs.append('<p>' + ' '.join(current_paragraph) + '</p>')
+                current_paragraph = []
+        else:
+            # 段落の内容を追加
+            current_paragraph.append(line_stripped)
+    
+    # 残りの段落を閉じる
+    if current_paragraph:
+        paragraphs.append('<p>' + ' '.join(current_paragraph) + '</p>')
+    
+    html = '\n'.join(paragraphs)
     
     return html
 
