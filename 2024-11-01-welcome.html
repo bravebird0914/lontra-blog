@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- 【編集箇所】記事タイトルとdescription -->
+  <title>lontraへようこそ！ | lontra</title>
+  <meta name="description" content="lontraの最初の記事です。このグルメブログの目的や使い方について紹介します。" />
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Montserrat:wght@300;400;500;600;700;800&family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- サイドバー -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="profile-image-wrapper">
+        <a href="index.html" class="profile-image-link">
+          <div class="profile-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+            </svg>
+          </div>
+        </a>
+      </div>
+      
+      <a href="index.html" class="sidebar-title-link">
+        <h1 class="sidebar-title">
+          <span class="name-first">lontra</span>
+        </h1>
+      </a>
+      <p class="sidebar-subtitle">
+        <span class="subtitle-line">Gourmet</span>
+        <span class="subtitle-accent">Food & Restaurant</span>
+      </p>
+    </div>
+    
+    <nav class="sidebar-nav">
+      <ul>
+        <li><a href="index.html">All Posts</a></li>
+        <li><a href="https://bravebird0914.github.io/" target="_blank">Portfolio</a></li>
+      </ul>
+    </nav>
+  </aside>
+  
+  <!-- 日付表示 -->
+  <div id="current-date" class="current-date">
+    <span class="date-year"></span>
+    <span class="date-separator">.</span>
+    <span class="date-month-day"></span>
+    <span class="date-weekday"></span>
+  </div>
+
+  <!-- Dark Mode Toggle -->
+  <button id="dark-mode-toggle" class="dark-mode-toggle" aria-label="ダークモード切り替え">
+    <span class="toggle-icon">
+      <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+      </svg>
+      <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display: none;">
+        <circle cx="12" cy="12" r="5"></circle>
+        <line x1="12" y1="1" x2="12" y2="3"></line>
+        <line x1="12" y1="21" x2="12" y2="23"></line>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+        <line x1="1" y1="12" x2="3" y2="12"></line>
+        <line x1="21" y1="12" x2="23" y2="12"></line>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+      </svg>
+    </span>
+  </button>
+
+  <!-- メインコンテンツ -->
+  <main class="main-content">
+    <article class="blog-article">
+      <header class="blog-article-header">
+        <!-- 【編集箇所】日付とカテゴリー -->
+        <div class="blog-article-meta">
+          <span class="blog-article-date">2024.11.01</span>
+          <span class="blog-article-category">Info</span>
+        </div>
+        <!-- 【編集箇所】記事タイトル -->
+        <h1 class="blog-article-title">lontraへようこそ！</h1>
+        <!-- 【編集箇所】記事の要約 -->
+        <p class="blog-article-excerpt">lontraの最初の記事です。このグルメブログの目的や使い方について紹介します。</p>
+      </header>
+      
+      <!-- 【編集箇所】記事本文 -->
+      <div class="blog-article-content">
+<p>この記事は、<strong>lontra</strong>の最初の投稿です。このブログでは、美味しいお店や料理の記録・感想を共有していきます。</p>
+
+<h2>このブログについて</h2>
+
+<p>lontraは、友人と2人で運営するグルメブログです。以下のような内容を発信していく予定です：</p>
+
+<ul>
+<li>訪れたレストランやカフェの感想</li>
+<li>おすすめのメニューや料理の写真</li>
+<li>グルメスポットの紹介</li>
+<li>美味しいお店の記録</li>
+</ul>
+
+<h2>特徴</h2>
+
+<p>このブログには以下の特徴があります：</p>
+
+<ul>
+<li><strong>Markdownで記事を作成</strong>: 記事はMarkdown形式で書くため、シンプルで書きやすい</li>
+<li><strong>自動ビルド</strong>: Pythonスクリプトで自動的にHTMLに変換される</li>
+<li><strong>ダークモード対応</strong>: 目に優しいダークモードを搭載</li>
+<li><strong>レスポンシブデザイン</strong>: スマートフォンでも快適に閲覧可能</li>
+</ul>
+
+<h2>記事の書き方</h2>
+
+<p>記事を書くのは簡単です：</p>
+
+<p>1. <code>posts/</code> ディレクトリに Markdown ファイルを作成
+2. Frontmatter（メタデータ）を記述
+3. ビルドスクリプトを実行
+4. GitHubにプッシュ</p>
+
+<p>詳しい手順は [README.md](https://github.com/bravebird0914/lontra-blog) をご覧ください。</p>
+
+<h2>デザインについて</h2>
+
+<p>このブログのデザインは、[bravebird's Portfolio](https://bravebird0914.github.io/) と統一感のあるデザインになっています。アクアマリンをテーマカラーとした寒色系のカラースキームで、落ち着いた雰囲気を目指しました。</p>
+
+<h2>Markdown形式について</h2>
+
+<p>記事はMarkdown形式で簡単に作成できます：</p>
+
+<ul>
+<li><strong>見出し</strong>: <code>#</code> で見出しを作成</li>
+<li><strong>リスト</strong>: <code>-</code> で箇条書き</li>
+<li><strong>画像</strong>: お店の写真も簡単に追加可能</li>
+</ul>
+
+<h2>まとめ</h2>
+
+<p>lontraは、美味しいグルメを記録し、共有するためのプラットフォームです。これから定期的に更新していく予定ですので、ぜひご覧ください！\
+<strong>Happy Blogging! 📝✨</strong></p>
+      </div>
+
+      <footer class="blog-article-footer">
+        <a href="index.html" class="blog-back-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          <span>記事一覧</span>
+        </a>
+      </footer>
+    </article>
+  </main>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
+
