@@ -213,74 +213,112 @@ strong {
 }
 
 /* ========================================
-   日付表示
+   日付表示（右上）- シンプル軽量デザイン
 ======================================== */
 .current-date {
   position: fixed;
   top: 2rem;
   right: 2rem;
-  z-index: 50;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
-  color: #718096;
-  font-size: 0.9rem;
   display: flex;
   align-items: center;
-  gap: 0.3rem;
-  letter-spacing: 0.05em;
-  padding: 0.6rem 1.2rem;
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(10px);
+  gap: 0.4rem;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(127, 255, 212, 0.25);
   border-radius: 20px;
-  box-shadow: 0 4px 15px rgba(127, 255, 212, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  z-index: 1000;
+  font-family: 'Montserrat', 'Noto Sans JP', sans-serif;
+  font-size: 0.85rem;
+  color: #4a5568;
+}
+
+.date-year {
+  font-weight: 600;
+  letter-spacing: 0.02em;
 }
 
 .date-separator {
-  color: #00CED1;
+  color: rgba(127, 255, 212, 0.6);
+  margin: 0 -0.1rem;
+}
+
+.date-month-day {
+  font-weight: 600;
+  letter-spacing: 0.01em;
 }
 
 .date-weekday {
-  margin-left: 0.3rem;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
   color: #00CED1;
-  font-weight: 700;
+  margin-left: 0.2rem;
+  padding-left: 0.5rem;
+  border-left: 1px solid rgba(127, 255, 212, 0.3);
 }
 
 /* ========================================
-   ダークモードトグル
+   ダークモード切り替えボタン
 ======================================== */
 .dark-mode-toggle {
   position: fixed;
   top: 2rem;
   right: 12rem;
-  z-index: 50;
   width: 44px;
   height: 44px;
-  border-radius: 50%;
-  border: none;
+  border-radius: 12px;
   background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(10px);
+  border: 1px solid rgba(127, 255, 212, 0.2);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 15px rgba(127, 255, 212, 0.15);
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  z-index: 1000;
 }
 
 .dark-mode-toggle:hover {
-  background: rgba(127, 255, 212, 0.2);
-  transform: scale(1.1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(127, 255, 212, 0.15);
+  border-color: rgba(127, 255, 212, 0.4);
+  background: rgba(255, 255, 255, 0.95);
 }
 
-.dark-mode-toggle svg {
+.dark-mode-toggle:active {
+  transform: translateY(0);
+}
+
+.toggle-icon {
   width: 20px;
   height: 20px;
-  fill: #718096;
-  stroke: #718096;
+  transition: all 0.3s ease;
+}
+
+.toggle-icon svg {
+  width: 100%;
+  height: 100%;
+  transition: all 0.3s ease;
+}
+
+.moon-icon {
+  stroke: none;
+  fill: #4a5568;
+}
+
+.sun-icon {
+  stroke: #4a5568;
+  fill: none;
   stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
-  transition: all 0.3s ease;
+}
+
+.sun-icon circle {
+  fill: #4a5568;
 }
 
 /* ========================================
@@ -691,22 +729,36 @@ body.dark-mode .sidebar-nav a.active {
 }
 
 body.dark-mode .current-date {
-  background: rgba(15, 27, 42, 0.8);
+  background: rgba(15, 27, 42, 0.85);
+  border-color: rgba(127, 255, 212, 0.3);
   color: #cbd5e1;
 }
 
-body.dark-mode .date-separator,
 body.dark-mode .date-weekday {
   color: #7FFFD4;
+  border-left-color: rgba(127, 255, 212, 0.4);
 }
 
 body.dark-mode .dark-mode-toggle {
   background: rgba(15, 27, 42, 0.8);
+  border-color: rgba(127, 255, 212, 0.3);
 }
 
-body.dark-mode .dark-mode-toggle svg {
-  fill: #cbd5e1;
-  stroke: #cbd5e1;
+body.dark-mode .dark-mode-toggle:hover {
+  background: rgba(15, 27, 42, 0.9);
+  border-color: rgba(127, 255, 212, 0.5);
+}
+
+body.dark-mode .moon-icon {
+  fill: #7FFFD4;
+}
+
+body.dark-mode .sun-icon {
+  stroke: #7FFFD4;
+}
+
+body.dark-mode .sun-icon circle {
+  fill: #7FFFD4;
 }
 
 body.dark-mode .blog-title {
@@ -881,18 +933,23 @@ body.dark-mode .profile-icon svg {
     margin-left: 0;
     padding: 2rem 1.5rem;
   }
-
+  
   .current-date {
-    top: auto;
-    bottom: 2rem;
-    right: 1rem;
+    top: 1rem;
+    right: 5rem;
+    padding: 0.45rem 0.85rem;
+    font-size: 0.75rem;
   }
 
+  .date-weekday {
+    font-size: 0.7rem;
+  }
+  
   .dark-mode-toggle {
-    top: auto;
-    bottom: 2rem;
-    left: 1rem;
-    right: auto;
+    top: 1rem;
+    right: 1rem;
+    width: 40px;
+    height: 40px;
   }
 
   .blog-grid {
@@ -902,6 +959,40 @@ body.dark-mode .profile-icon svg {
 
   .blog-article {
     padding-top: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    padding: 1.5rem 1rem;
+  }
+
+  .main-content {
+    padding: 1.5rem 1rem 2rem;
+  }
+
+  .current-date {
+    top: 4.5rem;
+    right: 0.75rem;
+    padding: 0.4rem 0.7rem;
+    font-size: 0.7rem;
+    gap: 0.25rem;
+  }
+
+  .date-weekday {
+    display: none;
+  }
+  
+  .dark-mode-toggle {
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 38px;
+    height: 38px;
+  }
+  
+  .toggle-icon {
+    width: 18px;
+    height: 18px;
   }
 }
 
