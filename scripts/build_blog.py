@@ -20,6 +20,7 @@ from datetime import datetime
 SCRIPT_DIR = Path(__file__).parent
 PROJECT_ROOT = SCRIPT_DIR.parent
 POSTS_DIR = PROJECT_ROOT / "posts"
+ARTICLES_DIR = PROJECT_ROOT / "articles"
 POSTS_JSON = PROJECT_ROOT / "posts.json"
 TEMPLATE_FILE = PROJECT_ROOT / "_template.html"
 
@@ -211,9 +212,10 @@ def build_posts():
         # MarkdownをHTMLに変換
         body_html = markdown_to_html(body)
         
-        # HTMLファイル名を生成（.md → .html）
+        # HTMLファイル名を生成（.md → articles/*.html）
         html_filename = md_file.stem + '.html'
-        html_path = PROJECT_ROOT / html_filename
+        ARTICLES_DIR.mkdir(parents=True, exist_ok=True)
+        html_path = ARTICLES_DIR / html_filename
         
         # HTMLを生成
         html_content = generate_html(metadata, body_html, template)
@@ -222,7 +224,11 @@ def build_posts():
         with open(html_path, 'w', encoding='utf-8') as f:
             f.write(html_content)
         
-        print(f"✅ 生成: {html_filename}")
+        print(f"✅ 生成: articles/{html_filename}")
+
+        stale_root_html = PROJECT_ROOT / html_filename
+        if stale_root_html.exists():
+            stale_root_html.unlink()
         
         # 記事情報をリストに追加
         post_info = {
@@ -231,7 +237,7 @@ def build_posts():
             "date": metadata.get("date", ""),
             "category": metadata.get("category", ""),
             "excerpt": metadata.get("excerpt", ""),
-            "file": html_filename
+            "file": f"articles/{html_filename}"
         }
         posts.append(post_info)
     
