@@ -38,61 +38,6 @@ setTimeout(() => {
   }, timeUntilMidnight);
 }, 100);
 
-// ダークモード切り替え
-const initDarkModeToggle = () => {
-  const toggle = document.getElementById('dark-mode-toggle');
-  if (!toggle) return;
-
-  const body = document.body;
-  const moonIcon = toggle.querySelector('.moon-icon');
-  const sunIcon = toggle.querySelector('.sun-icon');
-  
-  // アイコン切り替え関数
-  const updateIcon = (isDark) => {
-    if (isDark) {
-      moonIcon.style.display = 'none';
-      sunIcon.style.display = 'block';
-    } else {
-      moonIcon.style.display = 'block';
-      sunIcon.style.display = 'none';
-    }
-  };
-  
-  // ローカルストレージから設定を読み込み
-  const savedMode = localStorage.getItem('darkMode');
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  
-  // 初期状態を設定
-  if (savedMode === 'dark' || (!savedMode && prefersDark)) {
-    body.classList.add('dark-mode');
-    updateIcon(true);
-  } else {
-    updateIcon(false);
-  }
-  
-  // クリックイベント
-  toggle.addEventListener('click', () => {
-    body.classList.toggle('dark-mode');
-    const isDark = body.classList.contains('dark-mode');
-    
-    updateIcon(isDark);
-    localStorage.setItem('darkMode', isDark ? 'dark' : 'light');
-  });
-  
-  // システムの設定変更を監視
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-    if (!localStorage.getItem('darkMode')) {
-      if (e.matches) {
-        body.classList.add('dark-mode');
-        updateIcon(true);
-      } else {
-        body.classList.remove('dark-mode');
-        updateIcon(false);
-      }
-    }
-  });
-};
-
 // スムーススクロール
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
@@ -120,11 +65,6 @@ document.querySelectorAll('a[href^="http"]').forEach(link => {
     link.setAttribute('target', '_blank');
     link.setAttribute('rel', 'noopener noreferrer');
   }
-});
-
-// ページ読み込み時に初期化
-window.addEventListener('load', () => {
-  initDarkModeToggle();
 });
 
 // デバッグ用
