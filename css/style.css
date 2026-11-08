@@ -535,6 +535,13 @@ strong {
   color: var(--text-body);
 }
 
+.blog-article-content img {
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  margin: 0.4rem 0 1.8rem;
+}
+
 .blog-article-content h1 {
   font-size: 2rem;
   font-weight: 700;
