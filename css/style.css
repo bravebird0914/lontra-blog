@@ -290,6 +290,9 @@ strong {
   font-family: 'Montserrat', 'Noto Sans JP', sans-serif;
   font-size: 0.85rem;
   color: var(--text-body);
+  user-select: none;
+  -webkit-user-select: none;
+  cursor: default;
 }
 
 .date-year {
