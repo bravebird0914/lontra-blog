@@ -67,8 +67,62 @@ document.querySelectorAll('a[href^="http"]').forEach(link => {
   }
 });
 
-// デバッグ用
-if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-  console.log('✨ lontra loaded');
+// 右上の日付をすばやく3回押すと、カワウソが一度だけ横切る
+function initSecretOtter() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const trigger = document.querySelector('.current-date');
+  if (!trigger) return;
+
+  let taps = 0;
+  let resetTimer = 0;
+
+  trigger.addEventListener('click', () => {
+    taps += 1;
+    window.clearTimeout(resetTimer);
+    resetTimer = window.setTimeout(() => {
+      taps = 0;
+    }, 700);
+    if (taps < 3) return;
+    taps = 0;
+    passOtter();
+  });
+}
+
+function passOtter() {
+  let otter = document.querySelector('.secret-otter');
+  if (!otter) {
+    otter = document.createElement('div');
+    otter.className = 'secret-otter';
+    otter.setAttribute('aria-hidden', 'true');
+    otter.innerHTML = `
+      <svg viewBox="0 0 120 64" width="96" height="52" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="34" cy="40" rx="28" ry="14" fill="#6e4430"/>
+        <ellipse cx="40" cy="42" rx="16" ry="8" fill="#f4dec6"/>
+        <circle cx="62" cy="30" r="14" fill="#6e4430"/>
+        <circle cx="56" cy="20" r="4" fill="#6e4430"/>
+        <circle cx="68" cy="19" r="4" fill="#6e4430"/>
+        <ellipse cx="72" cy="32" rx="7" ry="5" fill="#f4deC6"/>
+        <circle cx="77" cy="31" r="2.2" fill="#2a1e1a"/>
+        <circle cx="66" cy="28" r="1.7" fill="#2a1e1a"/>
+        <ellipse cx="58" cy="44" rx="5" ry="3" fill="#4e3022"/>
+        <ellipse cx="78" cy="46" rx="5" ry="3" fill="#4e3022"/>
+      </svg>
+    `;
+    document.body.appendChild(otter);
+  }
+
+  otter.classList.remove('is-swimming');
+  void otter.offsetWidth;
+  otter.classList.add('is-swimming');
+  otter.addEventListener('animationend', () => {
+    otter.classList.remove('is-swimming');
+  }, { once: true });
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initSecretOtter);
+} else {
+  initSecretOtter();
 }
 
