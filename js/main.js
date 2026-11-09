@@ -77,12 +77,15 @@ function initSecretOtter() {
   let taps = 0;
   let resetTimer = 0;
 
-  trigger.addEventListener('click', () => {
+  trigger.addEventListener('pointerdown', (event) => {
+    if (event.pointerType === 'mouse' && event.button !== 0) return;
+    event.preventDefault();
+    window.getSelection()?.removeAllRanges();
     taps += 1;
     window.clearTimeout(resetTimer);
     resetTimer = window.setTimeout(() => {
       taps = 0;
-    }, 700);
+    }, 900);
     if (taps < 3) return;
     taps = 0;
     passOtter();
