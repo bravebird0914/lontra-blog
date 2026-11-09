@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://bravebird0914.github.io/lontra-blog/">
-    <img src="images/readme-cover.gif" alt="lontra — gourmet food & restaurant" width="880">
+    <img src="images/lontra-cover.gif" alt="lontra — gourmet food & restaurant" width="880">
   </a>
 </p>
 
